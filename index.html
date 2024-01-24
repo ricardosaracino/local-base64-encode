@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 50px
+        }
+
+        #encoded {
+            padding: 10px;
+            max-width: 700px;
+            min-height: 30px;
+            max-height: 300px;
+            overflow-y: scroll;
+            word-wrap: break-word;
+            margin-top: 50px;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        }
+
+        #pic {
+            max-width: 700px;
+            height: auto;
+            margin-top: 50px;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        }
+    </style>
+</head>
+<body>
+<input type="file" value="Choose TXT File" id="file"
+       accept="image/*" onchange="encode(event)">
+<div id="encoded"></div>
+<img id="pic">
+</body>
+<script>
+    function encode(event) {
+
+        var reader = new FileReader();
+
+        reader.onload = function (file) {
+
+            var output = document.getElementById('pic');
+
+            output.src = file.target.result;
+
+            document.getElementById('encoded').innerHTML = (file.target.result).slice(file.target.result.indexOf(",") + 1)
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+</html>
